@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permiso de Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -24,9 +24,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <!-- Normal launcher para móviles -->
                 <category android:name="android.intent.category.LAUNCHER" />
-                <!-- Soporte para Android TV / Fire TV -->
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>

@@ -17,17 +17,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         webView = WebView(this)
-        webView.settings.javaScriptEnabled = true
-        webView.settings.domStorageEnabled = true
-        webView.settings.cacheMode = WebSettings.LOAD_DEFAULT
+
+        with(webView.settings) {
+            javaScriptEnabled = true
+            domStorageEnabled = true
+            cacheMode = WebSettings.LOAD_DEFAULT
+            loadsImagesAutomatically = true
+            setSupportZoom(false)
+            builtInZoomControls = false
+            displayZoomControls = false
+            useWideViewPort = true
+            loadWithOverviewMode = true
+            mediaPlaybackRequiresUserGesture = false
+        }
+
         webView.webViewClient = WebViewClient()
+
+        webView.setLayerType(WebView.LAYER_TYPE_HARDWARE, null)
 
         // Load site
         webView.loadUrl("https://fabstream.online")
 
         setContentView(webView)
     }
-
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
